@@ -224,9 +224,11 @@ h3, .brand {
     margin-bottom: 0.25rem;
 }
 
-.education-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
+.education-card img {
+    max-width: 7rem;
+    height: auto;
+    margin-bottom: 1rem;
+    display: block;
 }
 
 .education-card .year {
