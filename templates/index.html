@@ -87,6 +87,7 @@
                             </article>
                         </div>
                     </div>
+
                     <div class="wave-divider">
                         <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
                             <path fill="var(--skills-bg-2)" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"/>
@@ -123,45 +124,37 @@
                 <p class="section-kicker">Experience</p>
                 <h2 class="section-title">Where I've Worked</h2>
 
-                <img class="experience-split" src="{% static 'img/compfest-landing.jpg' %}" alt="Photo of landing page compfest">                    
-                    <div class="experience-info">
+                 <div class="experience-stack">
+                    <div class="experience-split" style="background-image: url('{% static "img/compfest-landing.jpg" %}');">                    <div class="experience-info">
                         <span class="date-badge">2026</span>
                         <h3>COMPFEST</h3>
                         <p>UI/UX Staff</p>
                     </div>
-            </div> 
-        </div> 
-    </section> 
-
-    <!-- INTEREST SECTION -->
-    <section class="interest-section" id="interests">
-        <div class="container">
-            <p class="section-kicker">Beyond the screen</p>
-            <h2 class="section-title">Things I'm Interested In</h2>
-
-            <div class="interest-stack">
-                    <img class="interest-split" src="{% static 'img/cooking.jpg' %}" alt="Photo of dishes">
-                        <h3>Cooking</h3>
-                        <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
-                    </div>
-                </article>
-
-                <article class="interest-row interest-reading" style="background-image: url('images/manga-collage.jpg');">
-                    <div class="interest-row-overlay">
-                        <h3>Reading</h3>
-                        <p>manga that i read this week.</p>
-                    </div>
-                </article>
-
-                <article class="interest-row interest-art" style="background-image: url('images/painting.jpg');">
-                    <div class="interest-row-overlay">
-                        <h3>Art</h3>
-                        <p>Paintings I love looking at to de-stress.</p>
-                    </div>
-                </article>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- INTEREST SECTION -->
+    <div class="interest-stack">
+        <article class="interest-row interest-cooking" style="background-image: url('{% static 'img/cooking.jpg' %}');">            <div class="interest-row-overlay">
+                <h3>Cooking</h3>
+                <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
+            </div>
+        </article>
+
+        <article class="interest-row interest-reading" style="background-image: url('{% static 'img/manga-collage.jpg' %}');">            <div class="interest-row-overlay">
+                <h3>Reading</h3>
+                <p>manga that i read this week.</p>
+            </div>
+        </article>
+
+        <article class="interest-row interest-art" style="background-image: url('{% static 'img/painting.jpg' %}');">            <div class="interest-row-overlay">
+                <h3>Art</h3>
+                <p>Paintings I love looking at to de-stress.</p>
+            </div>
+        </article>
+    </div>
 
     </main>
     <footer class="site-footer">

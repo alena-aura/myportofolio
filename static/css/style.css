@@ -34,7 +34,6 @@ body {
 
     /* full-page textured background, stays fixed while scrolling */
     background-color: var(--paper);
-    background-image: url('../img/texture-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -466,6 +465,17 @@ h3, .brand {
 }
 
 /* EXPERIENCE SECTION */
+.exp-section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.experience-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
 .experience-split {
     position: relative;
     border: 1px solid var(--glass-border);
@@ -555,6 +565,7 @@ h3, .brand {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 .interest-row:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 32px 0 rgba(217, 93, 57, 0.15);
@@ -591,3 +602,4 @@ h3, .brand {
         transition: none !important;
     }
 }
+
