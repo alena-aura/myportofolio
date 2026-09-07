@@ -87,8 +87,7 @@
 
                     <div class="wave-divider">
                         <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                            <path fill=#103730 " d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"/>                        </svg>
-                    </div>
+                            <path fill="#103730" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"/>                    </div>
                 </section>
         
         <!-- SKILLS SECTION -->
@@ -145,32 +144,39 @@
     </section>
 
     <!-- INTEREST SECTION -->
+    <!-- INTEREST SECTION -->
     <section class="interest-section" id="interests">
         <div class="container">
             <p class="section-kicker">Beyond the screen</p>
             <h2 class="section-title">Things I'm Interested In</h2>
 
-            <div class="interest-stack">
-                <article class="interest-row interest-cooking" data-bg="{% static 'img/cooking.jpg' %}">
-                    <div class="interest-row-overlay">
-                        <h3>Cooking</h3>
-                        <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
-                    </div>
-                </article>
+            <div class="interest-scroll-wrapper">
+                <button class="scroll-arrow scroll-arrow-left" id="arrowLeft" aria-label="Scroll left">&larr;</button>
 
-                <article class="interest-row interest-reading" data-bg="{% static 'img/anime.jpg' %}">
-                    <div class="interest-row-overlay">
-                        <h3>Reading</h3>
-                        <p>manga that i read this week.</p>
-                    </div>
-                </article>
+                <div class="interest-stack" id="interestScroll">
+                    <article class="interest-row interest-cooking" data-bg="{% static 'img/cooking.jpeg' %}">
+                        <div class="interest-row-overlay">
+                            <h3>Cooking</h3>
+                            <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
+                        </div>
+                    </article>
 
-                <article class="interest-row interest-art" data-bg="{% static 'img/art.jpg' %}">
-                    <div class="interest-row-overlay">
-                        <h3>Art</h3>
-                        <p>Paintings I love looking at to de-stress.</p>
-                    </div>
-                </article>
+                    <article class="interest-row interest-reading" data-bg="{% static 'img/manga.jpg' %}">
+                        <div class="interest-row-overlay">
+                            <h3>Reading</h3>
+                            <p>Manga that I read this week.</p>
+                        </div>
+                    </article>
+
+                    <article class="interest-row interest-art" data-bg="{% static 'img/art.jpg' %}">
+                        <div class="interest-row-overlay">
+                            <h3>Art</h3>
+                            <p>Paintings I love looking at to de-stress.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <button class="scroll-arrow scroll-arrow-right" id="arrowRight" aria-label="Scroll right">&rarr;</button>
             </div>
         </div>
     </section>
@@ -212,19 +218,19 @@
     </footer>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
         const scrollEl = document.getElementById("interestScroll");
-        const up = document.getElementById("arrowUp");
-        const down = document.getElementById("arrowDown");
-        if (scrollEl && up && down) {
-            up.addEventListener("click", () => scrollEl.scrollBy({ top: -190, behavior: "smooth" }));
-            down.addEventListener("click", () => scrollEl.scrollBy({ top: 190, behavior: "smooth" }));
+        const left = document.getElementById("arrowLeft");
+        const right = document.getElementById("arrowRight");
+
+        if (scrollEl && left && right) {
+            left.addEventListener("click", () => scrollEl.scrollBy({ left: -360, behavior: "smooth" }));
+            right.addEventListener("click", () => scrollEl.scrollBy({ left: 360, behavior: "smooth" }));
         }
 
         document.querySelectorAll("[data-bg]").forEach((el) => {
             if (el.dataset.bg) {
                 el.style.backgroundImage = `url('${el.dataset.bg}')`;
-                el.classList.add("has-photo");
             }
         });
     });

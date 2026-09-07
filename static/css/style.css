@@ -576,9 +576,9 @@ h3, .brand {
 
 .interest-row {
     position: relative;
-    min-width: 340px;
-    width: 340px;
-    height: 200px;
+    min-width: 480px;
+    width: 480px;
+    height: 280px;
     flex: 0 0 auto;
     border-radius: var(--radius);
     background-size: cover;
@@ -600,21 +600,21 @@ h3, .brand {
 .interest-row-overlay {
     position: relative;
     width: 100%;
-    padding: 20px 24px;
+    padding: 24px 28px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 60%, transparent 100%);
     color: var(--paper);
 }
 
 .interest-row-overlay h3 {
-    font-size: 1.2rem;
-    margin: 0 0 6px;
+    font-size: 1.4rem;  
+    margin: 0 0 8px;
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .interest-row-overlay p {
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;  
     opacity: 0.95;
     max-width: 500px;
 }
@@ -676,4 +676,53 @@ h3, .brand {
 .tool-card p {
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+.interest-scroll-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.scroll-arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--complement);
+    color: var(--paper);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scroll-arrow:hover {
+    background-color: var(--complement-dark);
+    transform: scale(1.05);
+}
+
+.interest-stack {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none; 
+}
+
+.interest-stack::-webkit-scrollbar {
+    display: none; }
+
+@media (max-width: 600px) {
+    .interest-row {
+        min-width: 300px;
+        width: 300px;
+        height: 220px;
+    }
 }
