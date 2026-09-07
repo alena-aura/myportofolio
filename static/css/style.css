@@ -286,7 +286,7 @@ h3, .brand {
 }
 
 .education-card {
-    background-color: rgba(250, 246, 240, 0.4);
+    background-color: var(--glass-bg);
  
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
