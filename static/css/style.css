@@ -244,10 +244,15 @@ h3, .brand {
     }
 }
 
+/* EDUCATION SECTION */ 
 .education {
-    padding: 4rem 0;
+    padding: 3rem 0 6rem; 
+    margin-top: -2rem;
+    position: relative;
+    z-index: 5; 
+    text-align: center;
 }
- 
+
 .section-kicker {
     font-size: 0.85rem;
     letter-spacing: 0.08em;
@@ -256,72 +261,108 @@ h3, .brand {
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
- 
+
 .section-title {
     font-family: "Space Grotesk", -apple-system, sans-serif;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    margin-bottom: 2.5rem;
-}
- 
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.75rem;
+    margin-bottom: 2rem;
 }
 
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto; 
+    text-align: left; 
+}
+
+/* ACADEMIC CARD*/
 .education-card {
-    background-color: var(--glass-bg);
- 
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid var(--accent);
+    background: rgba(255, 255, 255, 0.65); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
- 
-    border: 1px solid rgba(28, 25, 23, 0.2);
-    border-bottom: 3px solid rgba(28, 25, 23, 0.3);
- 
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    border-radius: calc(var(--radius) * 2); 
+    padding: 2rem 1.75rem; 
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
- 
+    transition: all 0.4s ease;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
     opacity: 0;
     animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
- 
+
+.education-card:nth-child(2) {
+    border-top-color: var(--ink); 
+}
+
+.education-card::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: -40px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(85, 132, 103, 0.12), transparent 70%);
+    pointer-events: none;
+}
+.education-card:nth-child(2)::after {
+    background: radial-gradient(circle, rgba(23, 67, 63, 0.08), transparent 70%);
+}
+
+.education-card img {
+    width: 55px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
 .education-card h3 {
     color: var(--ink);
-    font-size: 1.2rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    width: 100%; 
+    position: relative;
+    z-index: 2;
 }
- 
+
 .education-card p {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.6;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
- 
-.education-card img {
-    max-width: 5rem;
-    height: auto;
-    margin-bottom: 1rem;
-    display: block;
-}
- 
+
 .education-card .year {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    color: var(--paper);
-    background-color: var(--ink);
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius);
-    margin-top: 1.25rem;
+    color: #ffffff; 
+    background-color: var(--accent); 
+    padding: 0.4rem 1.2rem;
+    border-radius: 6px;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
- 
+
 .education-card:hover {
     transform: translateY(-5px);
-    border: 1px solid rgba(217, 93, 57, 0.4);
-    box-shadow: 0 8px 32px 0 rgba(217, 93, 57, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
- 
+
 @keyframes fadeSlideUp {
     from {
         opacity: 0;
@@ -332,42 +373,17 @@ h3, .brand {
         transform: translateY(0);
     }
 }
- 
+
 .education-card:nth-child(1) {
     animation-delay: 0.1s;
 }
- 
+
 .education-card:nth-child(2) {
     animation-delay: 0.3s;
 }
- 
-.education-card:nth-child(3) {
-    animation-delay: 0.5s;
-}
- 
-@media (max-width: 600px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "identity"
-            "photo"
-            "details";
-    }
- 
-    .hero-photo {
-        max-width: 220px;
-    }
- 
-    .social-links {
-        justify-content: flex-start;
-    }
- 
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 
+/* SKILLS SECTION */ 
 .skills-section {
     position: relative;
     padding: 4rem 0;
@@ -403,7 +419,7 @@ h3, .brand {
     cursor: pointer;
     font-weight: 700;
     color: var(--accent-dark);
-    list-style: none; /* removes the default triangle marker */
+    list-style: none;
     position: relative;
     padding-right: 24px;
 }
