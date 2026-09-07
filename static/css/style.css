@@ -7,18 +7,21 @@
 :root {
     --ink: #1c1917;
     --paper: #faf6f0;
-    --accent: #d95d39;
-    --accent-dark: #a8442a;
+    --accent: #045017;
+    --accent-dark: #042210;
     --line: #e3d9c9;
-    --text-muted: #6b6459;
+    --text-muted: #6edd3b;
     --radius: 4px;
 
     /*menambahkan bg pada hero section*/
     --hero-bg-1: #1a5f7a;
     --hero-bg-2: #2f8f6f;
+    --education-bg: #f4f1e6;
+    --skills-bg-1: #3f5c37;
+    --skills-bg-2: #7b9e6d;
 
     /* shared frosted-glass card look, reused by every section */
-    --glass-bg: rgba(250, 246, 240, 0.55);
+    --glass-bg: rgba(250, 246, 240, 0.82);
     --glass-border: rgba(28, 25, 23, 0.15);
     --glass-border-strong: rgba(28, 25, 23, 0.3);
 }
@@ -214,7 +217,8 @@ h3, .brand {
     left: 1.25rem;
     width: 100%;
     height: 100%;
-    background-color: var(--accent);
+    --accent: #2f8f6f;
+    --accent-dark: #1f5f4a;
     border-radius: var(--radius);
     z-index: 0;
 }
@@ -522,3 +526,48 @@ h3, .brand {
         -webkit-mask-image: none;
     }
 }
+
+/* INTEREST SECTION */
+.interest-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.interest-row {
+    position: relative;
+    min-height: 160px;
+    border-radius: var(--radius);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+.interest-row-overlay {
+    position: relative;
+    width: 100%;
+    padding: 20px 24px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+    color: var(--paper);
+}
+
+.interest-row-overlay h3 {
+    font-size: 1.2rem;
+    margin: 0 0 6px;
+}
+
+.interest-row-overlay p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.9;
+    max-width: 500px;
+}
+
+/* accent border per row, tied to the shared brand palette */
+.interest-cooking { border-color: var(--accent); }
+.interest-reading { border-color: var(--accent-dark); }
+.interest-art      { border-color: var(--ink); }
