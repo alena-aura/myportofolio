@@ -103,17 +103,11 @@ h3, .brand {
     overflow: hidden;
     color: var(--paper); 
 
-    background-image: 
-        repeating-linear-gradient(
-            45deg,
-            rgba(255, 255, 255, 0.06) 0px,
-            rgba(255, 255, 255, 0.06) 2px,
-            transparent 2px,
-            transparent 12px
-        ),
+    background: 
+        radial-gradient(circle at 80% 45%, var(--accent-glow) 0%, transparent 45%),
         linear-gradient(135deg, var(--hero-bg-1), var(--hero-bg-2));
 
-    background-size: auto, 200% 200%;
+    background-size: 200% 200%, 200% 200%;
     animation: gradientShift 12s ease infinite;
 }
 
@@ -628,4 +622,32 @@ h3, .brand {
         width: 45vw;
         max-width: 220px;
     }
+}
+
+/* TOOLS SECTION */
+.tools-section {
+    position: relative;
+    padding: 4rem 0;
+    background-color: var(--education-bg);
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.tool-card {
+    padding: 1.5rem;
+}
+
+.tool-card h3 {
+    color: var(--ink);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.tool-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
