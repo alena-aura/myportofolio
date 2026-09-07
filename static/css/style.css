@@ -350,7 +350,7 @@ h3, .brand {
     font-size: 0.85rem;
     font-weight: 700;
     color: #ffffff; 
-    background-color: var(--accent); 
+    background-color: #4B1426; 
     padding: 0.4rem 1.2rem;
     border-radius: 6px;
     margin-top: 1.5rem;
@@ -386,16 +386,17 @@ h3, .brand {
 /* SKILLS SECTION */ 
 .skills-section {
     position: relative;
-    padding: 4rem 0;
+    padding: 6rem 0;
     color: var(--paper);
 
     background-image: 
-        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(135deg, var(--skills-bg-1), var(--skills-bg-2));
-    background-size: 32px 32px, 32px 32px, 200% 200%;
-    animation: gradientShift 14s ease infinite;
+        linear-gradient(rgba(23, 67, 63, 0.85), rgba(10, 29, 27, 0.95)),
+        url('../img/download (10).jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
+
 
 .skills-section .section-kicker {
     color: #dff2c8;
@@ -517,7 +518,7 @@ h3, .brand {
 
 .experience-info .date-badge {
     display: inline-block;
-    background-color: var(--complement);
+    background-color: #4B1426;
     color: var(--paper);
     font-size: 12px;
     font-weight: 700;
@@ -543,6 +544,19 @@ h3, .brand {
         mask-image: none;
         -webkit-mask-image: none;
     }
+}
+
+.exp-role {
+    margin: 0;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.exp-bio {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    max-width: 340px;
+    margin-top: 0.5rem;
 }
 
 /* INTEREST SECTION */
