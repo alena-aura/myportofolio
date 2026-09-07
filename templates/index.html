@@ -26,42 +26,39 @@
     </header>
 
     <main>
-        <!-- HERO SECTION -->
-        <section class="hero" id="profile">
-            <div class="container hero-grid">
-                <div class="hero-identity">
-                    <p class="hero-kicker">Information System &middot; Universitas Indonesia</p>
-                    <h1>Alena</h1>
-                </div>
-                <div class="hero-photo">
-                        <img class="avatar" src="{% static 'img/Alena.jpg' %}" alt="Photo of Alena">
-                </div>
-                <div class="hero-details">
-                    <p class="bio">A loser trapped in a body of a 19 years old girl that likes to eat.</p>
-                    <dl class="meta-list">
-                        <div class="meta-row">
-                            <dt>NPM</dt>
-                            <dd>2506656394</dd>
-                        </div>
-                        <div class="meta-row">
-                            <dt>Program</dt>
-                            <dd>S1 Sistem Informasi</dd>
-                        </div>
-                    </dl>
-                    <div class="social-links">
-                        <a href="https://github.com/alena-aura" class="social-link">GitHub</a>
-                        <a href="https://linkedin.com/alena.aura" class="social-link">LinkedIn</a>
-                        <a href="mailto:alena.aura@ui.ac.id" class="social-link">Email</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="wave-divider">
-                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                    <path fill="var(--paper)" d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"/>
-                </svg>
+    <!-- HERO SECTION -->
+    <section class="hero" id="profile">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <p class="hero-kicker">Information System &middot; Universitas Indonesia</p>
+                <h1>Hi, It's <span class="accent-text">Alena</span></h1>
+                <p class="hero-role">I'm a <span class="accent-text">UI/UX Enthusiast</span></p>
+                <p class="bio">A university student and UI/UX designer, I am committed to developing functional and aesthetically pleasing digital solutions. 
+                    Beyond my academic responsibilities, I actively pursue interests in global cuisine, fine art appreciation, and reading, which continually inspire my creative process</p>
+
+                <dl class="meta-list">
+                    <div class="meta-row"><dt>NPM</dt><dd>2506656394</dd></div>
+                    <div class="meta-row"><dt>Program</dt><dd>S1 Sistem Informasi</dd></div>
+                </dl>
+
+                <div class="social-links">
+                    <a href="https://github.com/alena-aura" class="social-icon" aria-label="GitHub">GH</a>
+                    <a href="https://linkedin.com/alena.aura" class="social-icon" aria-label="LinkedIn">in</a>
+                    <a href="mailto:alena.aura@ui.ac.id" class="social-icon" aria-label="Email">@</a>
+                </div>
             </div>
-        </section>
+            <div class="hero-photo">
+                <div class="photo-glow"></div>
+                <img class="avatar" src="{% static 'img/Alena.jpg' %}" alt="Photo of Alena">
+            </div>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path fill="var(--paper)" d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"/>
+            </svg>
+        </div>
+    </section>
 
          <!-- EDUCATION SECTION -->
         <section class="education" id="education">
@@ -147,27 +144,27 @@
     </section>
 
     <!-- INTEREST SECTION -->
-    <section class="exp-section" id="interests">
+    <section class="interest-section" id="interests">
         <div class="container">
             <p class="section-kicker">Beyond the screen</p>
             <h2 class="section-title">Things I'm Interested In</h2>
 
             <div class="interest-stack">
-                <article class="interest-row interest-cooking" style="background-image: url('{% static "img/cooking.jpg" %}');">
+                <article class="interest-row interest-cooking" data-bg="">
                     <div class="interest-row-overlay">
                         <h3>Cooking</h3>
                         <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
                     </div>
                 </article>
 
-                <article class="interest-row interest-reading" style="background-image: url('{% static "img/manga-collage.jpg" %}');">
+                <article class="interest-row interest-reading" data-bg="">
                     <div class="interest-row-overlay">
                         <h3>Reading</h3>
-                        <p>Manga that I read this week.</p>
+                        <p>manga that i read this week.</p>
                     </div>
                 </article>
 
-                <article class="interest-row interest-art" style="background-image: url('{% static "img/painting.jpg" %}');">
+                <article class="interest-row interest-art" data-bg="">
                     <div class="interest-row-overlay">
                         <h3>Art</h3>
                         <p>Paintings I love looking at to de-stress.</p>
