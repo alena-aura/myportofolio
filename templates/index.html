@@ -151,21 +151,21 @@
             <h2 class="section-title">Things I'm Interested In</h2>
 
             <div class="interest-stack">
-                <article class="interest-row interest-cooking" data-bg="">
+                <article class="interest-row interest-cooking" data-bg="{% static 'img/cooking.jpg' %}">
                     <div class="interest-row-overlay">
                         <h3>Cooking</h3>
                         <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
                     </div>
                 </article>
 
-                <article class="interest-row interest-reading" data-bg="">
+                <article class="interest-row interest-reading" data-bg="{% static 'img/anime.jpg' %}">
                     <div class="interest-row-overlay">
                         <h3>Reading</h3>
                         <p>manga that i read this week.</p>
                     </div>
                 </article>
 
-                <article class="interest-row interest-art" data-bg="">
+                <article class="interest-row interest-art" data-bg="{% static 'img/art.jpg' %}">
                     <div class="interest-row-overlay">
                         <h3>Art</h3>
                         <p>Paintings I love looking at to de-stress.</p>
@@ -210,5 +210,24 @@
             <p>&copy; 2026 Alena. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const scrollEl = document.getElementById("interestScroll");
+        const up = document.getElementById("arrowUp");
+        const down = document.getElementById("arrowDown");
+        if (scrollEl && up && down) {
+            up.addEventListener("click", () => scrollEl.scrollBy({ top: -190, behavior: "smooth" }));
+            down.addEventListener("click", () => scrollEl.scrollBy({ top: 190, behavior: "smooth" }));
+        }
+
+        document.querySelectorAll("[data-bg]").forEach((el) => {
+            if (el.dataset.bg) {
+                el.style.backgroundImage = `url('${el.dataset.bg}')`;
+                el.classList.add("has-photo");
+            }
+        });
+    });
+    </script>
 </body>
 </html>

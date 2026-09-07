@@ -386,7 +386,7 @@ h3, .brand {
 /* SKILLS SECTION */ 
 .skills-section {
     position: relative;
-    padding: 6rem 0;
+    padding: 6rem 0 8rem 0;
     color: var(--paper);
 
     background-image: 
@@ -560,15 +560,26 @@ h3, .brand {
 }
 
 /* INTEREST SECTION */
+.interest-section {
+    padding: 4rem 0;
+}
+
 .interest-stack {
     display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    flex-direction: row; 
+    gap: 1.5rem;
+    overflow-x: auto;    
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
 }
 
 .interest-row {
     position: relative;
-    min-height: 160px;
+    min-width: 340px;
+    width: 340px;
+    height: 200px;
+    flex: 0 0 auto;
     border-radius: var(--radius);
     background-size: cover;
     background-position: center;
@@ -576,33 +587,35 @@ h3, .brand {
     display: flex;
     align-items: flex-end;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+    scroll-snap-align: start;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 .interest-row:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 32px 0 rgba(217, 143, 75, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(217, 143, 75, 0.2);
 }
 
 .interest-row-overlay {
     position: relative;
     width: 100%;
     padding: 20px 24px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 60%, transparent 100%);
     color: var(--paper);
 }
 
 .interest-row-overlay h3 {
     font-size: 1.2rem;
     margin: 0 0 6px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .interest-row-overlay p {
     margin: 0;
     font-size: 13px;
-    opacity: 0.9;
+    opacity: 0.95;
     max-width: 500px;
 }
 
