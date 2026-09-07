@@ -13,6 +13,7 @@
     --line: #e3d9c9;
     --text-muted: #6b6259;
     --radius: 4px;
+    --accent-glow: rgba(31, 122, 61, 0.55);
 
     /*menambahkan bg pada hero section*/
     --hero-bg-1: #1a5f7a;
@@ -224,14 +225,24 @@ h3, .brand {
 }
 
 .avatar {
-    position: relative;
-    z-index: 1;
     display: block;
-    width: 100%;
+    width: 22vw;
+    min-width: 180px;
+    max-width: 280px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: var(--radius);
-    border: 3px solid var(--ink);
+    border-radius: 50%; 
+    border: 3px solid var(--paper);
+
+    box-shadow: 0 0 25px var(--accent-glow);
+    transition: 0.4s ease-in-out;
+}
+
+.avatar:hover {
+    box-shadow:
+        0 0 25px var(--accent-glow),
+        0 0 50px var(--accent-glow),
+        0 0 100px var(--accent-glow);
 }
 
 .site-footer {
@@ -251,7 +262,10 @@ h3, .brand {
     }
 
     .hero-photo {
-        max-width: 220px;
+        grid-area: photo;
+        align-self: center;
+        display: flex;
+        justify-content: center;
     }
 
     .social-links {
@@ -261,7 +275,6 @@ h3, .brand {
 
 .education {
     padding: 4rem 0;
-    border-top: 1px solid var(--line);
 }
  
 .section-kicker {
@@ -361,13 +374,6 @@ h3, .brand {
     animation-delay: 0.5s;
 }
  
-.site-footer {
-    padding: 1.5rem;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--line);
-}
- 
 @media (max-width: 600px) {
     .hero-grid {
         grid-template-columns: 1fr;
@@ -391,10 +397,25 @@ h3, .brand {
 }
 
 
-/* shared section wrapper*/
-.skills-section{
+.skills-section {
+    position: relative;
     padding: 4rem 0;
-    border-top: 1px solid var(--line);
+    color: var(--paper);
+
+    background-image: 
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(135deg, var(--skills-bg-1), var(--skills-bg-2));
+    background-size: 32px 32px, 32px 32px, 200% 200%;
+    animation: gradientShift 14s ease infinite;
+}
+
+.skills-section .section-kicker {
+    color: #dff2c8;
+}
+
+.skills-section .section-title {
+    color: var(--paper);
 }
 
 /*skills section*/
@@ -467,7 +488,6 @@ h3, .brand {
 /* EXPERIENCE SECTION */
 .exp-section {
     padding: 4rem 0;
-    border-top: 1px solid var(--line);
 }
 
 .experience-stack {
