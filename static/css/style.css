@@ -583,3 +583,10 @@ h3, .brand {
 .interest-cooking { border-color: var(--accent); }
 .interest-reading { border-color: var(--accent-dark); }
 .interest-art      { border-color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
