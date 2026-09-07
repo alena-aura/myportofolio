@@ -7,10 +7,10 @@
 :root {
     --ink: #1c1917;
     --paper: #faf6f0;
-    --accent: #045017;
-    --accent-dark: #042210;
+    --accent: #1f7a3d;
+    --accent-dark: #0d3d1e;
     --line: #e3d9c9;
-    --text-muted: #6edd3b;
+    --text-muted: #6b6259;
     --radius: 4px;
 
     /*menambahkan bg pada hero section*/
