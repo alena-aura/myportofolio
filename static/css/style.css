@@ -603,3 +603,15 @@ h3, .brand {
     }
 }
 
+.skill-detail {
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid transparent;
+}
+
+.skill-detail[open] {
+    border-left: 3px solid var(--accent);
+}
+
+.skill-detail[open] summary {
+    color: var(--accent-dark);
+}
