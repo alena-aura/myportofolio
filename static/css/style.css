@@ -474,6 +474,12 @@ h3, .brand {
     background-size: cover;
     background-position: center;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-split:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px 0 rgba(217, 93, 57, 0.15);
 }
 
 .experience-info {
@@ -545,6 +551,7 @@ h3, .brand {
     align-items: flex-end;
     border: 1px solid var(--glass-border);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .interest-row-overlay {
