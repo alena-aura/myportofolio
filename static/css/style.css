@@ -13,6 +13,10 @@
     --text-muted: #6b6459;
     --radius: 4px;
 
+    /*menambahkan bg pada hero section*/
+    --hero-bg-1: #1a5f7a;
+    --hero-bg-2: #2f8f6f;
+
     /* shared frosted-glass card look, reused by every section */
     --glass-bg: rgba(250, 246, 240, 0.55);
     --glass-border: rgba(28, 25, 23, 0.15);
@@ -26,7 +30,7 @@ body {
 
     /* full-page textured background, stays fixed while scrolling */
     background-color: var(--paper);
-    background-image: url('images/texture-bg.jpg');
+    background-image: url('../img/texture-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -62,7 +66,7 @@ h3, .brand {
     transform: translateY(-5px);
     border: 1px solid rgba(217, 93, 57, 0.4);
     box-shadow: 0 8px 32px 0 rgba(217, 93, 57, 0.15);
-
+}
 
 .site-header {
     border-bottom: 1px solid var(--line);
@@ -94,7 +98,31 @@ h3, .brand {
 }
 
 .hero {
-    padding: 4.5rem 0 5rem;
+    position: relative;
+    padding: 4.5rem 0 6rem; /* extra padding bawah, untuk ruang wave divider */
+    overflow: hidden;
+    color: var(--paper); /* teks jadi terang karena background sekarang gelap */
+
+    /* pola garis diagonal tipis, ditumpuk di atas gradient warna */
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.06) 0px,
+            rgba(255, 255, 255, 0.06) 2px,
+            transparent 2px,
+            transparent 12px
+        ),
+        linear-gradient(135deg, var(--hero-bg-1), var(--hero-bg-2));
+
+    background-size: auto, 200% 200%;
+    animation: gradientShift 12s ease infinite;
+}
+
+/* geser posisi gradient pelan-pelan, menciptakan efek "hidup" */
+@keyframes gradientShift {
+    0%   { background-position: 0% 0%, 0% 50%; }
+    50%  { background-position: 0% 0%, 100% 50%; }
+    100% { background-position: 0% 0%, 0% 50%; }
 }
 
 .hero-grid {
@@ -118,7 +146,7 @@ h3, .brand {
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--accent-dark);
+    color: #ffd9c2;
     font-weight: 700;
     margin-bottom: 0.75rem;
 }
@@ -129,7 +157,7 @@ h3, .brand {
 }
 
 .bio {
-    color: var(--text-muted);
+    color: rgba(250, 246, 240, 0.75);
     max-width: 480px;
     margin-bottom: 1.5rem;
 }
@@ -144,7 +172,7 @@ h3, .brand {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--text-muted);
+    color: var(--paper);
     margin-bottom: 0.15rem;
 }
 
@@ -164,14 +192,14 @@ h3, .brand {
     font-weight: 600;
     text-decoration: none;
     color: var(--paper);
-    background-color: var(--ink);
+    background-color: rgba(250, 246, 240, 0.15);
     border-radius: var(--radius);
     padding: 0.5rem 1.1rem;
     transition: background-color 0.2s ease;
 }
 
 .social-link:hover {
-    background-color: var(--accent);
+   background-color: var(--accent);
 }
 
 .hero-photo {
@@ -355,5 +383,79 @@ h3, .brand {
  
     .education-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* shared section wrapper*/
+.skills-section{
+    padding: 4rem 0;
+    border-top: 1px solid var(--line);
+}
+
+/*skills section*/
+.skills-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* extends .glass-card with accordion-specific padding */
+.skill-detail {
+    padding: 1.25rem 1.5rem;
+}
+
+.skill-detail summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--accent-dark);
+    list-style: none; /* removes the default triangle marker */
+    position: relative;
+    padding-right: 24px;
+}
+
+.skill-detail summary::-webkit-details-marker {
+    display: none;
+}
+
+/* custom arrow, rotates when the <details> is open */
+.skill-detail summary::after {
+    content: "▼";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 12px;
+    color: var(--accent);
+    transition: transform 0.2s ease;
+}
+
+.skill-detail[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.skill-detail p {
+    margin-top: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* wave divider*/
+.wave-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+}
+
+.wave-divider svg {
+    width: 100%;
+    height: 80px;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .wave-divider svg {
+        height: 40px;
     }
 }
