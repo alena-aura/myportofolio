@@ -15,14 +15,12 @@
     --radius: 4px;
     --accent-glow: rgba(31, 122, 61, 0.55);
 
-    /*menambahkan bg pada hero section*/
     --hero-bg-1: #1a5f7a;
     --hero-bg-2: #2f8f6f;
     --education-bg: #f4f1e6;
     --skills-bg-1: #3f5c37;
     --skills-bg-2: #7b9e6d;
 
-    /* shared frosted-glass card look, reused by every section */
     --glass-bg: rgba(250, 246, 240, 0.82);
     --glass-border: rgba(28, 25, 23, 0.15);
     --glass-border-strong: rgba(28, 25, 23, 0.3);
@@ -33,7 +31,6 @@ body {
     color: var(--ink);
     line-height: 1.6;
 
-    /* full-page textured background, stays fixed while scrolling */
     background-color: var(--paper);
     background-size: cover;
     background-position: center;
@@ -54,7 +51,6 @@ h3, .brand {
     padding: 0 1.5rem;
 }
 
- /* reusable glass card component */
  .glass-card {
     background-color: var(--glass-bg);
     backdrop-filter: blur(10px);
@@ -103,11 +99,10 @@ h3, .brand {
 
 .hero {
     position: relative;
-    padding: 4.5rem 0 6rem; /* extra padding bawah, untuk ruang wave divider */
+    padding: 4.5rem 0 6rem; 
     overflow: hidden;
-    color: var(--paper); /* teks jadi terang karena background sekarang gelap */
+    color: var(--paper); 
 
-    /* pola garis diagonal tipis, ditumpuk di atas gradient warna */
     background-image: 
         repeating-linear-gradient(
             45deg,
@@ -122,7 +117,6 @@ h3, .brand {
     animation: gradientShift 12s ease infinite;
 }
 
-/* geser posisi gradient pelan-pelan, menciptakan efek "hidup" */
 @keyframes gradientShift {
     0%   { background-position: 0% 0%, 0% 50%; }
     50%  { background-position: 0% 0%, 100% 50%; }
@@ -418,14 +412,12 @@ h3, .brand {
     color: var(--paper);
 }
 
-/*skills section*/
 .skills-accordion {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
 }
 
-/* extends .glass-card with accordion-specific padding */
 .skill-detail {
     padding: 1.25rem 1.5rem;
 }
@@ -443,7 +435,6 @@ h3, .brand {
     display: none;
 }
 
-/* custom arrow, rotates when the <details> is open */
 .skill-detail summary::after {
     content: "▼";
     position: absolute;
@@ -525,10 +516,8 @@ h3, .brand {
     justify-content: center;
     color: var(--paper);
 
-    /* opaque black gradient so text stays readable over any photo */
     background: linear-gradient(100deg, rgba(0, 0, 0, 0.88) 40%, rgba(0, 0, 0, 0.1) 100%);
 
-    /* concave "bite" shape on the right edge, instead of a straight line */
     -webkit-mask-image: radial-gradient(circle at 100% 50%, transparent 130px, black 131px);
     mask-image: radial-gradient(circle at 100% 50%, transparent 130px, black 131px);
 }
@@ -558,7 +547,6 @@ h3, .brand {
 @media (max-width: 600px) {
     .experience-info {
         width: 75%;
-        /* concave shape removed on mobile so text isn't cut off */
         mask-image: none;
         -webkit-mask-image: none;
     }
@@ -611,7 +599,6 @@ h3, .brand {
     max-width: 500px;
 }
 
-/* accent border per row, tied to the shared brand palette */
 .interest-cooking { border-color: var(--accent); }
 .interest-reading { border-color: var(--accent-dark); }
 .interest-art      { border-color: var(--ink); }
@@ -634,4 +621,11 @@ h3, .brand {
 
 .skill-detail[open] summary {
     color: var(--accent-dark);
+}
+
+@media (max-width: 600px) {
+    .avatar {
+        width: 45vw;
+        max-width: 220px;
+    }
 }
