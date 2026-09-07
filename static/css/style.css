@@ -554,6 +554,11 @@ h3, .brand {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.interest-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px 0 rgba(217, 93, 57, 0.15);
+}
+
 .interest-row-overlay {
     position: relative;
     width: 100%;
