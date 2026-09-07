@@ -6,24 +6,27 @@
 }
 
 :root {
-    --ink: #1c1917;
-    --paper: #faf6f0;
-    --accent: #1f7a3d;
-    --accent-dark: #0d3d1e;
-    --line: #e3d9c9;
-    --text-muted: #6b6259;
+    --ink: #17433F;
+    --paper: #EFEABB;
+    --wine: #4B1426;
+    --accent: #558467;
+    --accent-dark: #3E634C;
+    --complement: #D98F4B;     
+    --complement-dark: #B76F35;
+    --line: rgba(23, 67, 63, 0.18);
+    --text-muted: #4d5a4f;
     --radius: 4px;
-    --accent-glow: rgba(31, 122, 61, 0.55);
+    --accent-glow: rgba(85, 132, 103, 0.5);
 
-    --hero-bg-1: #1a5f7a;
-    --hero-bg-2: #2f8f6f;
-    --education-bg: #f4f1e6;
-    --skills-bg-1: #3f5c37;
-    --skills-bg-2: #7b9e6d;
+    --hero-bg-1: #4B1426;
+    --hero-bg-2: #17433F;
+    --education-bg: #EFEABB;
+    --skills-bg-1: #2f0f1c;   
+    --skills-bg-2: #17433F;   
 
-    --glass-bg: rgba(250, 246, 240, 0.82);
-    --glass-border: rgba(28, 25, 23, 0.15);
-    --glass-border-strong: rgba(28, 25, 23, 0.3);
+    --glass-bg: rgba(239, 234, 187, 0.85);
+    --glass-border: rgba(23, 67, 63, 0.15);
+    --glass-border-strong: rgba(23, 67, 63, 0.3);
 }
 
 body {
@@ -55,10 +58,10 @@ h3, .brand {
     background-color: var(--glass-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(217, 143, 75, 0.4);
     border-bottom: 3px solid var(--glass-border-strong);
     border-radius: var(--radius);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(217, 143, 75, 0.15);
     transition: all 0.3s ease;
 }
 
@@ -97,6 +100,7 @@ h3, .brand {
     font-size: 0.95rem;
 }
 
+/* HERO SECTION */ 
 .hero {
     position: relative;
     padding: 4.5rem 0 6rem; 
@@ -138,7 +142,7 @@ h3, .brand {
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #ffd9c2;
+    color: var(--complement);
     font-weight: 700;
     margin-bottom: 0.75rem;
 }
@@ -191,7 +195,7 @@ h3, .brand {
 }
 
 .social-link:hover {
-   background-color: var(--accent);
+   background-color: var(--complement);
 }
 
 .hero-photo {
@@ -518,7 +522,7 @@ h3, .brand {
 
 .experience-info .date-badge {
     display: inline-block;
-    background-color: var(--accent);
+    background-color: var(--complement);
     color: var(--paper);
     font-size: 12px;
     font-weight: 700;
@@ -570,7 +574,7 @@ h3, .brand {
 
 .interest-row:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 32px 0 rgba(217, 93, 57, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(217, 143, 75, 0.15);
 }
 
 .interest-row-overlay {
@@ -610,7 +614,7 @@ h3, .brand {
 }
 
 .skill-detail[open] {
-    border-left: 3px solid var(--accent);
+    border-left: 3px solid var(--complement);
 }
 
 .skill-detail[open] summary {
