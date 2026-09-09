@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alena - Portfolio</title>
+    <title>{{ name }} - Portofolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -13,33 +13,27 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <a href="#profile" class="brand">Alena</a>
+            <a href="{% url 'main:show_main' %}" class="brand">{{ name }}</a>
             <nav>
-                <a href="#profile">Profile</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#interests">Interests</a>
-                <a href="#tools">Tools</a>
+                <a href="{% url 'main:show_main' %}">Profile</a>
+                <a href="{% url 'main:show_experience' %}">Experience</a>
             </nav>
         </div>
     </header>
 
     <main>
-
         <!-- HERO SECTION -->
         <section class="hero" id="profile">
             <div class="container hero-grid">
                 <div class="hero-text">
                     <p class="hero-kicker">Information System &middot; Universitas Indonesia</p>
-                    <h1>Hi, It's <span class="accent-text">Alena</span></h1>
+                    <h1>Hi, It's <span class="accent-text">{{ name }}</span></h1>
                     <p class="hero-role">I'm a <span class="accent-text">UI/UX Enthusiast</span></p>
-                    <p class="bio">A university student and UI/UX designer, I am committed to developing functional and aesthetically pleasing digital solutions. 
-                        Beyond my academic responsibilities, I actively pursue interests in global cuisine, fine art appreciation, and reading, which continually inspire my creative process</p>
+                    <p class="bio">{{ bio }}</p>
 
                     <dl class="meta-list">
-                        <div class="meta-row"><dt>NPM</dt><dd>2506656394</dd></div>
-                        <div class="meta-row"><dt>Program</dt><dd>S1 Sistem Informasi</dd></div>
+                        <dd>{{ npm }}</dd>
+                        <dd>{{ study_program }}</dd>
                     </dl>
 
                     <div class="social-links">
@@ -50,7 +44,7 @@
                 </div>
                 <div class="hero-photo">
                     <div class="photo-glow"></div>
-                    <img class="avatar" src="{% static 'img/Alena.jpg' %}" alt="Photo of Alena">
+                    <img class="avatar" src="{% static 'img/Alena.jpg' %}" alt="Photo of {{ name }}">
                 </div>
             </div>
             <div class="wave-divider">
@@ -60,180 +54,154 @@
             </div>
         </section>
 
-         <!-- EDUCATION SECTION -->
+        <!-- EDUCATION SECTION -->
         <section class="education" id="education">
-                    <div class="container">
-                        <p class="section-kicker">Education</p>
-                        <h2 class="section-title">Academic Background</h2>
+            <div class="container">
+                <p class="section-kicker">Education</p>
+                <h2 class="section-title">Academic Background</h2>
 
-                        <div class="education-grid">
-                            
-                            <article class="education-card"> 
-                                <img src="{% static 'img/ui-logo.png' %}" alt="Logo Universitas Indonesia">
-                                <h3>Universitas Indonesia</h3>
-                                <p>S1 Sistem Informasi, Fakultas Ilmu Komputer</p>
-                                <p>Fokus untuk surviving.</p>
-                                <span class="year">2025 — Sekarang</span>
-                            </article>
+                <div class="education-grid">
+                    <article class="education-card"> 
+                        <img src="{% static 'img/ui-logo.png' %}" alt="Logo Universitas Indonesia">
+                        <h3>Universitas Indonesia</h3>
+                        <p>S1 Sistem Informasi, Fakultas Ilmu Komputer</p>
+                        <p>Fokus untuk surviving.</p>
+                        <span class="year">2025 — Sekarang</span>
+                    </article>
 
-                            <article class="education-card">
-                                <img src="{% static 'img/sman1-logo.png' %}" alt="Logo SMA Negeri 1 Kota Mungkid">
-                                <h3>SMA Negeri 1 Kota Mungkid</h3>
-                                <p>Pendidikan Menengah Atas - Jurusan MIPA</p>
-                                <span class="year">2021 — 2024</span>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="wave-divider">
-                        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                            <path fill="#103730" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"/>                    </div>
-                </section>
+                    <article class="education-card">
+                        <img src="{% static 'img/sman1-logo.png' %}" alt="Logo SMA Negeri 1 Kota Mungkid">
+                        <h3>SMA Negeri 1 Kota Mungkid</h3>
+                        <p>Pendidikan Menengah Atas - Jurusan MIPA</p>
+                        <span class="year">2021 — 2024</span>
+                    </article>
+                </div>
+            </div>
+            <div class="wave-divider">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path fill="#103730" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"/>
+                </svg>
+            </div>
+        </section>
         
         <!-- SKILLS SECTION -->
         <section class="skills-section" id="skills">
-        <div class="container">
-            <p class="section-kicker">Professional journey</p>
-            <h2 class="section-title">Skills</h2>
-
-            <div class="skills-accordion">
-                <details class="skill-detail glass-card" open>
-                    <summary>UI/UX Design</summary>
-                    <p>Landing page development, interactive features (animations, visual effects), and creating responsive layouts.</p>
-                </details>
-                <details class="skill-detail glass-card">
-                    <summary>Design Tools</summary>
-                    <p>Proficiency in Figma (crafting glass-effect templates and custom hero sections) and Canva.</p>
-                </details>
-                <details class="skill-detail glass-card">
-                    <summary>Prototyping</summary>
-                    <p>Translating research into actionable prototypes, user-centric wireframes, and engaging call-to-action sections.</p>
-                </details>
-            </div>
-        </div>
-            <div class="wave-divider">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path fill="var(--paper)" d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section class="exp-section" id="experience">
             <div class="container">
-                <p class="section-kicker">Experience</p>
-                <h2 class="section-title">Where I've Contributed</h2>
+                <p class="section-kicker">Professional journey</p>
+                <h2 class="section-title">Skills</h2>
 
-                 <div class="experience-stack">
-                    <div class="experience-split" style="background-image: url('{% static "img/compfest-landing.png" %}');">                    <div class="experience-info">
-                        <span class="date-badge">2026</span>
-                        <h3>COMPFEST</h3>
-                        <p>UI/UX Staff</p>
-                        <p class="exp-bio">Designed and implemented the COMPFEST 18 landing page hero section, 
-                            focusing on an engaging visual layout and high-converting calls to action.</p>
-                    </div>
+                <div class="skills-accordion">
+                    <details class="skill-detail glass-card" open>
+                        <summary>UI/UX Design</summary>
+                        <p>Landing page development, interactive features (animations, visual effects), and creating responsive layouts.</p>
+                    </details>
+                    <details class="skill-detail glass-card">
+                        <summary>Design Tools</summary>
+                        <p>Proficiency in Figma (crafting glass-effect templates and custom hero sections) and Canva.</p>
+                    </details>
+                    <details class="skill-detail glass-card">
+                        <summary>Prototyping</summary>
+                        <p>Translating research into actionable prototypes, user-centric wireframes, and engaging call-to-action sections.</p>
+                    </details>
                 </div>
             </div>
-        </div>
+            <div class="wave-divider">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path fill="var(--paper)" d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"/>
+                </svg>
+            </div>
+        </section>
 
-        <div class="wave-divider">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <!-- INTEREST SECTION -->
+        <section class="interest-section" id="interests">
+            <div class="container">
+                <p class="section-kicker">Beyond the screen</p>
+                <h2 class="section-title">Things I'm Interested In</h2>
+
+                <div class="interest-scroll-wrapper">
+                    <button class="scroll-arrow scroll-arrow-left" id="arrowLeft" aria-label="Scroll left">&larr;</button>
+
+                    <div class="interest-stack" id="interestScroll">
+                        <article class="interest-row interest-cooking" data-bg="{% static 'img/cooking.jpeg' %}">
+                            <div class="interest-row-overlay">
+                                <h3>Cooking</h3>
+                                <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
+                            </div>
+                        </article>
+
+                        <article class="interest-row interest-reading" data-bg="{% static 'img/manga.jpg' %}">
+                            <div class="interest-row-overlay">
+                                <h3>Reading</h3>
+                                <p>Manga that I read this week.</p>
+                            </div>
+                        </article>
+
+                        <article class="interest-row interest-art" data-bg="{% static 'img/art.jpg' %}">
+                            <div class="interest-row-overlay">
+                                <h3>Art</h3>
+                                <p>Paintings I love looking at to de-stress.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button class="scroll-arrow scroll-arrow-right" id="arrowRight" aria-label="Scroll right">&rarr;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLS & SOFTWARE SECTION -->
+        <section class="tools-section" id="tools">
+            <div class="container">
+                <p class="section-kicker">Toolkit</p>
+                <h2 class="section-title">Tools &amp; Software</h2>
+
+                <div class="tools-grid">
+                    <article class="tool-card glass-card">
+                        <h3>Figma</h3>
+                        <p>Primary tool for wireframing, prototyping, and building.</p>
+                    </article>
+                    <article class="tool-card glass-card">
+                        <h3>Canva</h3>
+                        <p>Used for quick visual assets, social media graphics, and event promotion materials.</p>
+                    </article>
+                    <article class="tool-card glass-card">
+                        <h3>Visual Studio Code</h3>
+                        <p>Main code editor for writing and debugging course assignments.</p>
+                    </article>
+                </div>
+            </div>
+            <div class="wave-divider">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
                     <path fill="var(--paper)" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"/>
                 </svg>
-        </div>
-    </section>
-
-    <!-- INTEREST SECTION -->
-    <!-- INTEREST SECTION -->
-    <section class="interest-section" id="interests">
-        <div class="container">
-            <p class="section-kicker">Beyond the screen</p>
-            <h2 class="section-title">Things I'm Interested In</h2>
-
-            <div class="interest-scroll-wrapper">
-                <button class="scroll-arrow scroll-arrow-left" id="arrowLeft" aria-label="Scroll left">&larr;</button>
-
-                <div class="interest-stack" id="interestScroll">
-                    <article class="interest-row interest-cooking" data-bg="{% static 'img/cooking.jpeg' %}">
-                        <div class="interest-row-overlay">
-                            <h3>Cooking</h3>
-                            <p>Exploring Indonesian cuisine and recreating dishes from around the world.</p>
-                        </div>
-                    </article>
-
-                    <article class="interest-row interest-reading" data-bg="{% static 'img/manga.jpg' %}">
-                        <div class="interest-row-overlay">
-                            <h3>Reading</h3>
-                            <p>Manga that I read this week.</p>
-                        </div>
-                    </article>
-
-                    <article class="interest-row interest-art" data-bg="{% static 'img/art.jpg' %}">
-                        <div class="interest-row-overlay">
-                            <h3>Art</h3>
-                            <p>Paintings I love looking at to de-stress.</p>
-                        </div>
-                    </article>
-                </div>
-
-                <button class="scroll-arrow scroll-arrow-right" id="arrowRight" aria-label="Scroll right">&rarr;</button>
             </div>
-        </div>
-    </section>
-
-    <!-- TOOLS & SOFTWARE SECTION -->
-    <section class="tools-section" id="tools">
-        <div class="container">
-            <p class="section-kicker">Toolkit</p>
-            <h2 class="section-title">Tools &amp; Software</h2>
-
-            <div class="tools-grid">
-                <article class="tool-card glass-card">
-                    <h3>Figma</h3>
-                    <p>Primary tool for wireframing, prototyping, and building.</p>
-                </article>
-                <article class="tool-card glass-card">
-                    <h3>Canva</h3>
-                    <p>Used for quick visual assets, social media graphics, and event promotion materials.</p>
-                </article>
-                <article class="tool-card glass-card">
-                    <h3>Visual Studio Code</h3>
-                    <p>Main code editor for writing and debugging course assignments.</p>
-                </article>
-            </div>
-        </div>
-
-        <div class="wave-divider">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path fill="var(--paper)" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"/>
-            </svg>
-        </div>
-    </section>
-
+        </section>
     </main>
+
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 Alena. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
+            <p>&copy; 2026 {{ name }}. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-        const scrollEl = document.getElementById("interestScroll");
-        const left = document.getElementById("arrowLeft");
-        const right = document.getElementById("arrowRight");
+            const scrollEl = document.getElementById("interestScroll");
+            const left = document.getElementById("arrowLeft");
+            const right = document.getElementById("arrowRight");
 
-        if (scrollEl && left && right) {
-            left.addEventListener("click", () => scrollEl.scrollBy({ left: -360, behavior: "smooth" }));
-            right.addEventListener("click", () => scrollEl.scrollBy({ left: 360, behavior: "smooth" }));
-        }
-
-        document.querySelectorAll("[data-bg]").forEach((el) => {
-            if (el.dataset.bg) {
-                el.style.backgroundImage = `url('${el.dataset.bg}')`;
+            if (scrollEl && left && right) {
+                left.addEventListener("click", () => scrollEl.scrollBy({ left: -360, behavior: "smooth" }));
+                right.addEventListener("click", () => scrollEl.scrollBy({ left: 360, behavior: "smooth" }));
             }
+
+            document.querySelectorAll("[data-bg]").forEach((el) => {
+                if (el.dataset.bg) {
+                    el.style.backgroundImage = `url('${el.dataset.bg}')`;
+                }
+            });
         });
-    });
     </script>
 </body>
 </html>
+
