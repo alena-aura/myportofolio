@@ -24,3 +24,12 @@ class Experience(models.Model):
     @property
     def is_ongoing(self):
         return self.ended_at is None
+
+class Interest(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image_name = models.CharField(max_length=100) # Contoh isi: 'cooking.jpeg', 'travel.jpg'
+    created_at = models.DateTimeField(auto_now_add=True) # Field ke-3, opsional tapi berguna
+
+    def __str__(self):
+        return self.title

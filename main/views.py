@@ -16,3 +16,11 @@ def show_experience(request):
         "experience_list": Experience.objects.all(),
     }
     return render(request, "experience.html", context)
+
+def show_interest(request):
+    interests = Interest.objects.all()
+    context = {
+        'name': 'Alena Aura Devitana', # Sesuaikan dengan namamu
+        'interests': interests
+    }
+    return render(request, 'interest.html', context)
