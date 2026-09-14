@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from main.models import Experience
+from main.models import Experience, Interest
 
 def show_main(request):
     context = {
@@ -20,7 +20,7 @@ def show_experience(request):
 def show_interest(request):
     interests = Interest.objects.all()
     context = {
-        'name': 'Alena Aura Devitana', # Sesuaikan dengan namamu
+        'name': 'Alena Aura Deviyana',
         'interests': interests
     }
     return render(request, 'interest.html', context)
