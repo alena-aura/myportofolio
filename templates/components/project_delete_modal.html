@@ -1,0 +1,30 @@
+<div id="deleteModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-content">
+        <h2>Konfirmasi Hapus</h2>
+        <p>Apakah kamu yakin ingin menghapus project <strong id="deleteProjectTitle"></strong>?</p>
+        
+        <form id="deleteForm" method="POST">
+            {% csrf_token %}
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: flex-end;">
+                <button type="button" class="button button-secondary" onclick="closeDeleteModal()">Batal</button>
+                <button type="submit" class="button button-danger">Hapus</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function openDeleteModal(projectId, projectTitle) {
+    const modal = document.getElementById('deleteModal');
+    const titleElem = document.getElementById('deleteProjectTitle');
+    const form = document.getElementById('deleteForm');
+    
+    titleElem.textContent = projectTitle;
+    form.action = `/projects/${projectId}/delete/`;
+    modal.style.display = 'flex';
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+</script>

@@ -18,6 +18,7 @@ class Experience(models.Model):
     thumbnail = models.URLField(blank=True, null=True)
     started_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(blank=True, null=True)
+
     def __str__(self):
         return self.title
     
@@ -28,8 +29,20 @@ class Experience(models.Model):
 class Interest(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    image_name = models.CharField(max_length=100) # Contoh isi: 'cooking.jpeg', 'travel.jpg'
-    created_at = models.DateTimeField(auto_now_add=True) # Field ke-3, opsional tapi berguna
+    image_name = models.CharField(max_length=100) 
+    created_at = models.DateTimeField(auto_now_add=True) 
+
+    def __str__(self):
+        return self.title
+
+class Project(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    tech_stack = models.CharField(max_length=255, blank=True, default="")
+    project_url = models.URLField(blank=True, null=True)
+    project_image_url = models.URLField(blank=True, null=True)
+    category = models.CharField(max_length=100, blank=True, default="")
+    date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.title
