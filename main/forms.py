@@ -50,3 +50,18 @@ class ProjectForm(ModelForm):
                 }
             ),
         }
+
+class ExperienceForm(ModelForm):
+    class Meta:
+        model = Experience
+        fields = ["title", "category", "description", "is_ongoing"]
+        labels = {
+            "title": "Judul Pengalaman",
+            "category": "Kategori",
+            "description": "Deskripsi",
+            "is_ongoing": "Sedang Berlangsung",
+        }
+        widgets = {
+            "title": TextInput(attrs={"placeholder": "Sebutkan nama peran/kegiatan"}),
+            "description": Textarea(attrs={"placeholder": "Jelaskan pengalamanmu", "rows": 3}),
+        }
