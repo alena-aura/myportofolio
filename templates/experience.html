@@ -10,6 +10,13 @@
         <section class="experience-section" id="experience">
             <div class="container">
                 <p class="section-kicker">Perjalanan saya sejauh ini</p>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <a href="{% url 'main:create_experience' %}" class="button">
+                        + Tambah Pengalaman
+                    </a>
+                </div>
+
                 <h1>Experience</h1>
                 <div class="experience-grid">
                     {% for experience in experience_list %}
@@ -26,7 +33,16 @@
                             {% else %}
                                 <p class="experience-status">Selesai</p>
                             {% endif %}
-                        </article>
+
+                            <div style="margin-top: 15px; display: flex; gap: 10px;">
+                                <a href="{% url 'main:edit_experience' experience.id %}" class="button button-secondary">Edit</a>
+                                <form method="POST" action="{% url 'main:delete_experience' experience.id %}" onsubmit="return confirm('Apakah kamu yakin ingin menghapus pengalaman ini?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="button button-danger">Hapus</button>
+                                </form>
+                            </div>
+
+                        </article>   
                     {% empty %}
                         <p class="empty-state">
                             Belum ada pengalaman yang ditambahkan.
