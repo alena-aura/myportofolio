@@ -5,16 +5,25 @@ from django.shortcuts import get_object_or_404, redirect, render
 from main.forms import ProjectForm
 from main.models import Experience, Interest, Project
 from main.forms import ProjectForm, ExperienceForm
+from django.contrib import messages
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.shortcuts import redirect, render
+import datetime
 
 
 def show_main(request):
+    last_login = request.COOKIES.get('last_login', 'No active login session / Cookie not found')
     context = {
         "name": "Alena Aura Deviyana",
         "npm": "2506656394",
         "study_program": "S1 Sistem Informasi",
         "bio": "A university student and UI/UX designer, I am committed to developing functional and aesthetically pleasing digital solutions. Beyond my academic responsibilities, I actively pursue interests in global cuisine, fine art appreciation, and reading, which continually inspire my creative process",
+        "last_login": last_login,
     }
     return render(request, "index.html", context)
+
+
 
 def show_experience(request):
     json_response = get_experience_json(request)
@@ -122,3 +131,40 @@ def get_experience_json(request):
     experiences = Experience.objects.all()
     data = serializers.serialize("json", experiences)
     return HttpResponse(data, content_type="application/json")
+
+def register(request):
+    form = UserCreationForm(request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Account created successfully. Please log in.")
+        return redirect("main:login")
+
+    context = {
+        "name": "Alena",
+        "form": form,
+    }
+    return render(request, "register.html", context)
+
+def login_user(request):
+    form = AuthenticationForm(request, data=request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        user = form.get_user()
+        login(request, user)
+        response = redirect("main:show_main")
+        response.set_cookie('last_login', datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        return response
+
+    context = {
+        "name": "Alena",
+        "form": form,
+    }
+    return render(request, "login.html", context)
+
+
+def logout_user(request):
+    logout(request)
+    response = redirect("main:show_main")
+    response.delete_cookie('last_login')
+    return response
