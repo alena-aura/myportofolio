@@ -1066,3 +1066,15 @@ h3, .brand {
         text-align: center;
     }
 }
+
+select {
+    width: 100%;
+    padding: 10px; 
+    border: 1px solid var(--accent); 
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--paper);
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
