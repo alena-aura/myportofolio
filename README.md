@@ -71,3 +71,25 @@ Dalam penyelesaian Tugas 2, saya menggunakan alat bantu AI (**Gemini**) sebagai 
   * *Troubleshooting* error `OperationalError: no such table` dan `NameError` pada pendaftaran routing/views.
   * Penyusunan penjelasan alur MVT dan refleksi teknis untuk dokumentasi `README.md`.
 * **Evaluasi & Pengoperasian:** Seluruh kode hasil saran AI telah saya uji secara independen menggunakan perintah `python manage.py test` dan dipastikan lulus 100% tanpa error sebelum di-commit.
+
+
+### Tugas 3
+
+1. **Mengapa menggunakan ModelForm dibandingkan form HTML manual & fungsi `{% csrf_token %}`:**
+   - **ModelForm:** Mengurangi duplikasi kode (*DRY*) karena Django secara otomatis memetakan atribut model menjadi elemen input HTML beserta validasinya.
+   - **`{% csrf_token %}`:** Wajib disertakan pada setiap form berbahan POST untuk melindungi aplikasi dari serangan **CSRF (*Cross-Site Request Forgery*)**, memastikan bahwa *request* benar-benar berasal dari pengguna sah di aplikasi kita.
+
+2. **Mengapa JSON lebih disukai dibandingkan XML pada aplikasi web modern:**
+   - **Ukuran Ringan:** Format JSON tidak menggunakan *closing tag* yang berat seperti XML, sehingga ukuran data jauh lebih kecil dan hemat *bandwidth*.
+   - **Parsing Cepat:** JSON merupakan format data *native* di JavaScript, sehingga dapat diproses (*parsing*) oleh browser secara langsung tanpa perlu pengolahan dokumen DOM XML.
+
+3. **Alur pengembalian data JSON & pentingnya proses *serialization*:**
+   - **Alur:** Klien mengirim *request* ke URL API -> Django mengambil `QuerySet` dari database -> Data diubah menjadi format teks JSON menggunakan `serializers.serialize("json", ...)` -> *View* mengembalikan `HttpResponse` berkonten JSON.
+   - **Pentingnya Serialization:** Objek Python di memori server bersifat kompleks dan tidak bisa dikirim langsung melalui protokol HTTP. *Serialization* bertugas mengonversi objek tersebut menjadi string teks JSON standar universal.
+
+---
+
+### AI Disclosure
+- **Tools AI yang digunakan:** Gemini AI.
+- **Tujuan penggunaan:** Membantu pemecahan error `FieldError` pada `forms.py`, penyelarasan struktur `ModelForm`, pembuatan *view* CRUD dan API JSON, serta penyiapan draf README.md.
+- **Refleksi & Modifikasi Manual:** Kode disesuaikan kembali secara manual agar cocok dengan skema model `Experience` yang menggunakan `UUID` dan properti `@property is_ongoing`.
