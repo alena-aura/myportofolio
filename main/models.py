@@ -1,4 +1,5 @@
 import uuid
+from django.contrib.auth.models import User 
 from django.db import models
 
 class Experience(models.Model):
@@ -44,5 +45,12 @@ class Project(models.Model):
     category = models.CharField(max_length=100, blank=True, default="")
     date_added = models.DateField(auto_now_add=True)
 
+    # Add the field below: one project can be starred by many users,
+    # and one user can star many projects
+    starred_by = models.ManyToManyField(
+        User, related_name="starred_projects", blank=True
+    )
+
     def __str__(self):
         return self.title
+    
