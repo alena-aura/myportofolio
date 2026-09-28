@@ -93,3 +93,87 @@ Dalam penyelesaian Tugas 2, saya menggunakan alat bantu AI (**Gemini**) sebagai 
 - **Tools AI yang digunakan:** Gemini AI.
 - **Tujuan penggunaan:** Membantu pemecahan error `FieldError` pada `forms.py`, penyelarasan struktur `ModelForm`, pembuatan *view* CRUD dan API JSON, serta penyiapan draf README.md.
 - **Refleksi & Modifikasi Manual:** Kode disesuaikan kembali secara manual agar cocok dengan skema model `Experience` yang menggunakan `UUID` dan properti `@property is_ongoing`.
+
+
+
+### Tugas 4
+---
+
+## Deskripsi Singkat Proyek
+
+Pada Tugas 04 dan Tutorial 04 ini, saya menambahkan sistem Autentikasi, Otorisasi (Role-Based Access Control), pengelolaan Session & Cookie, serta fitur Star interaktif pada aplikasi portofolio.
+
+Sekarang, halaman portofolio dapat dibaca oleh siapa saja, tetapi aksi seperti mengubah data atau memberi star dibatasi sesuai dengan peran pengguna yang sedang login.
+
+### Fitur Utama:
+1. Autentikasi User: Fitur Register, Login, dan Logout menggunakan form bawaan Django.
+2. Session & Cookie: Pencatatan waktu login terakhir via cookie last_login yang ditampilkan di halaman utama dan dihapus otomatis saat logout.
+3. Hak Akses (Otorisasi): Pembagian 4 tingkat hak akses pada data Experience dan Project.
+4. Fitur Star: Pengguna yang sudah login dapat memberikan atau membatalkan star pada proyek maupun pengalaman.
+5. Keamanan API: Endpoint JSON /api/projects/ dan /api/experience/ dikonfigurasi menggunakan use_natural_foreign_keys=True agar tidak membocorkan ID internal database.
+
+---
+
+## Pembagian Hak Akses (Roles)
+
+1. Pengunjung (Guest): Hanya bisa membaca data portofolio. Jika mencoba melakukan tindakan lain, akan diarahkan ke halaman login.
+2. Pengguna Biasa: Bisa membaca data dan memberikan/membatalkan star pada projek atau pengalaman.
+3. Editor (Grup Editor): Memiliki hak pengguna biasa dan tambahan izin untuk mengedit data Experience.
+4. Superuser (Owner): Memiliki akses penuh (tambah, edit, hapus data, serta memberi star).
+
+---
+
+## Cara Menjalankan di Lokal
+
+1. Clone repositori dan masuk ke direktori:
+   git clone https://github.com/alena-aura/myportofolio.git
+   cd myportofolio
+
+2. Aktifkan virtual environment:
+   python -m venv env
+   
+   # Windows:
+   env\Scripts\activate
+   
+   # macOS/Linux:
+   source env/bin/activate
+
+3. Jalankan migrasi database:
+   python manage.py makemigrations
+   python manage.py migrate
+
+4. Buat akun Superuser (Owner):
+   python manage.py createsuperuser
+
+5. Setup Grup Editor di Django Admin:
+   - Jalankan server: python manage.py runserver
+   - Buka http://127.0.0.1:8000/admin/ dan login dengan akun superuser.
+   - Masuk ke menu Groups -> Add Group.
+   - Buat grup bernama Editor lalu simpan.
+   - Pilih salah satu akun user di menu Users, lalu masukkan ke dalam grup Editor.
+
+---
+
+## AI Disclosure & Perbaikan Manual
+
+Dalam mengerjakan tugas ini, saya menggunakan asisten AI (Google Gemini) sebagai alat bantu pengerjaan dan draf kode awal.
+
+### 1. Strategi Prompting
+Saya menggunakan pendekatan bertahap (step-by-step) dengan menyertakan file panduan penugasan (tutorial-4.pdf & tugas-4.pdf) serta potongan kode proyek agar AI memahami struktur proyek yang sedang dikerjakan.
+
+### 2. Contoh Prompt yang Digunakan
+- "berikan list file apa saja yang saya harus perbaiki jika tombol star tidak muncul di halaman projects."
+- "berikan step by step mengerjakan Tugas 4 berdasarkan kriteria di tugas-4.pdf."
+- "kerjakan langkah 2 pada views.py tanpa komentar yang tidak perlu."
+
+### 3. Kendala AI & Perbaikan Manual
+Ada beberapa bagian di mana saran dari AI kurang tepat sehingga harus diperbaiki secara manual:
+
+1. Error Parameter URL (urls.py):
+   AI menggenerasi route URL menggunakan converter <uuid:project_id>. Padahal model Project saya menggunakan primary key integer standar Django, sehingga menyebabkan error NoReverseMatch. Saya memperbaikinya secara manual menjadi <int:project_id>.
+
+2. Cakupan Tombol Star pada Template (project.html):
+   AI menyarankan memasukkan komponen project_star.html ke dalam blok {% if user.is_superuser %}. Akibatnya, user biasa tidak bisa melihat tombol star. Saya memindahkannya keluar blok tersebut agar bisa diakses oleh semua user yang sudah login.
+
+3. Duplikasi Route URL:
+   AI sempat menambahkan route star yang sama dua kali di bagian bawah urls.py. Saya menghapus baris duplikat tersebut dan merapikan susunan URL.
