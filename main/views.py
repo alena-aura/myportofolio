@@ -13,6 +13,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import redirect, render
 import datetime
 
+def is_editor(user):
+    return user.is_authenticated and user.groups.filter(name='Editor').exists()
 
 def show_main(request):
     last_login = request.COOKIES.get('last_login', 'No active login session / Cookie not found')
@@ -37,6 +39,7 @@ def show_experience(request):
         "name": "Alena Aura Deviyana",
         "surname": "Alena",
         "experience_list": experiences,
+        "is_editor": is_editor(request.user),
     }
     return render(request, "experience.html", context)
 
