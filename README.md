@@ -177,3 +177,45 @@ Ada beberapa bagian di mana saran dari AI kurang tepat sehingga harus diperbaiki
 
 3. Duplikasi Route URL:
    AI sempat menambahkan route star yang sama dua kali di bagian bawah urls.py. Saya menghapus baris duplikat tersebut dan merapikan susunan URL.
+
+
+---
+
+### Tugas 5
+
+1. **Pengertian Debouncing dan Pentingnya pada Fitur Pencarian AJAX**
+* **Debouncing** adalah teknik pemrograman yang digunakan untuk menunda eksekusi suatu fungsi hingga jeda waktu tertentu telah berlalu sejak terakhir kali fungsi tersebut dipicu.
+* Teknik ini sangat penting diterapkan pada fitur pencarian berbasis AJAX agar server tidak kewalahan menerima permintaan (*request*) yang berlebihan setiap kali pengguna mengetik satu huruf. Dengan debouncing, permintaan AJAX hanya akan dikirimkan setelah pengguna berhenti mengetik selama beberapa milidetik (misalnya 300 ms), sehingga dapat menghemat *bandwidth*, mengurangi beban kerja server, dan meningkatkan performa responsivitas aplikasi.
+
+
+2. **Fungsi `await` pada `fetch()` dan Akibat Jika Tidak Digunakan**
+* **Fungsi `await**`: Digunakan untuk menangguhkan eksekusi fungsi asinkron (`async`) sementara waktu hingga *Promise* dari fungsi `fetch()` selesai diproses (*resolved*), sehingga kita bisa mendapatkan objek *Response* secara berurutan.
+* **Jika tidak menggunakan `await**`: JavaScript tidak akan menunggu respons jaringan kembali dan langsung mengeksekusi baris kode di bawahnya. Akibatnya, variabel yang menampung hasil `fetch()` bukanlah data respons, melainkan sebuah objek *Promise* yang masih berstatus *pending*, sehingga proses pengambilan data atau pem-parsingan JSON akan gagal (*error*).
+
+
+3. **Serangan XSS (Cross-Site Scripting) dan Kerentanan pada AJAX/JavaScript vs Template Django**
+* **XSS (Cross-Site Scripting)** adalah celah keamanan di mana penyerang berhasil menyuntikkan skrip berbahaya (biasanya berupa kode JavaScript) ke dalam halaman web yang nantinya akan dieksekusi oleh peramban pengguna lain.
+* **Mengapa lebih rentan pada AJAX/JavaScript**: Ketika kita memanipulasi DOM menggunakan JavaScript (misalnya menyisipkan data dari respons AJAX melalui properti `innerHTML`), peramban akan langsung merender dan mengeksekusi string teks apa adanya tanpa filter otomatis. Sebaliknya, template engine bawaan Django secara *default* sudah menerapkan perlindungan *auto-escaping* pada sintaks templating-nya untuk menetralisir karakter khusus HTML. Oleh karena itu, pada pengembangan berbasis AJAX/JavaScript, kita wajib melakukan pembersihan manual di sisi server menggunakan `strip_tags` maupun *escaping* di sisi klien menggunakan fungsi khusus (seperti `escapeHtml` atau memanfaatkan `textContent`) untuk mencegah eksekusi skrip berbahaya.
+
+
+### AI Disclosure & Analisis Kritis (Tugas 5)
+
+Dalam pengerjaan Individual Assignment 5 ini, saya memanfaatkan AI (Google Gemini) sebagai kolaborator teknis untuk membantu mempercepat proses pengembangan fitur interaktif. Berikut adalah rincian transparan terkait penggunaan AI:
+
+#### 1. Tools yang Digunakan
+* **Google Gemini AI:** Berperan sebagai asisten pengkodean (*coding assistant*), peninjau logika AJAX, serta pemandu penyusunan struktur HTML elemen `<dialog>` dan integrasi *toast notification*.
+
+#### 2. Strategi Prompting
+* **Context-Driven & Iterative Prompting:** Saya memberikan potongan kode spesifik dari berkas `project.html` dan `experience.html` yang sedang dikerjakan, lalu meminta AI untuk menyesuaikan pola asinkronus (`fetch()`, `AbortController`, dan *debouncing*) agar konsisten di seluruh bagian aplikasi.
+* **Rubric-Aligned Prompting:** Menggunakan panduan *checkpoint* tugas untuk memastikan setiap ketentuan wajib (seperti proteksi XSS menggunakan `escapeHtml` dan `strip_tags`, serta penanganan modal dinamis) terpenuhi tanpa ada yang terlewat.
+
+#### 3. Bagian Spesifik yang Dibantu oleh AI
+* Penyusunan struktur fungsi `fetchExperiences` yang menerapkan *AbortController* untuk menghentikan *request* ganda saat pengguna mengetik terlalu cepat.
+* Penulisan fungsi logika *debouncing* (`setTimeout`) pada *event listener* kolom pencarian.
+* Penggabungan implementasi fungsi `showToast` untuk notifikasi sukses dan error saat pengiriman formulir AJAX.
+
+#### 4. Analisis Kritis & Batasan AI (Perbaikan Manual)
+Meskipun AI sangat membantu, terdapat beberapa keterbatasan dari solusi yang diberikan sehingga memerlukan peninjauan dan perbaikan secara mandiri (*manual override*):
+* **Konflik Elemen Modal:** AI sempat menyarankan penggunaan tag `<form method="dialog">` sebagai *backdrop* modal, yang justru membuat dialog tertutup secara tidak disengaja saat pengguna mengklik area luar formulir. Saya memperbaiki bagian ini secara manual dengan memisahkan elemen *backdrop* dan mengatur *event listener* penutup secara eksplisit di JavaScript.
+* **Penyesuaian URL Namespace Django:** Saran kode awal dari AI sering kali menggunakan penamaan *endpoint* generik. Saya menyesuaikannya secara manual agar selaras dengan pola *namespacing* Django (`{% url 'main:get_experience_json' %}` dan `{% url 'main:create_experience_ajax' %}`).
+* **Pengujian Integrasi:** Seluruh kode hasil bantuan AI diuji secara langsung melalui peramban lokal (`runserver`) untuk memastikan tidak ada *error* pada konsol JavaScript maupun *TemplateDoesNotExist* di sisi Django.
