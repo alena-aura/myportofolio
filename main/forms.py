@@ -1,4 +1,5 @@
 from django.forms import DateInput, ModelForm, Textarea, TextInput, URLInput
+from django.utils.html import strip_tags # Diperlukan untuk sanitasi XSS di server
 
 from main.models import Experience, Project
 
@@ -70,3 +71,12 @@ class ExperienceForm(ModelForm):
             "thumbnail": URLInput(attrs={"placeholder": "https://..."}),
             "ended_at": DateInput(attrs={"type": "date"}),
         }
+
+    # Penambahan sanitasi XSS di sisi server menggunakan strip_tags
+    def clean_title(self):
+        title = self.cleaned_data.get("title", "")
+        return strip_tags(title)
+
+    def clean_description(self):
+        description = self.cleaned_data.get("description", "")
+        return strip_tags(description)
