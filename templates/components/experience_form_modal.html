@@ -1,0 +1,33 @@
+<dialog class="project-form-modal" id="add-experience-modal" popover="manual">
+    <div class="project-form-modal__content">
+        <form id="experience-form" method="POST" class="project-form">
+            {% csrf_token %}
+            <h2>Tambah Pengalaman Baru</h2>
+            <div class="form-group">
+                <label for="id_title">Judul Pengalaman</label>
+                <input type="text" id="id_title" name="title" required class="project-form__input">
+            </div>
+            <div class="form-group">
+                <label for="id_category">Kategori</label>
+                <select id="id_category" name="category" required class="project-form__select">
+                    <option value="WORK">Pekerjaan</option>
+                    <option value="EDU">Pendidikan</option>
+                    <option value="ORG">Organisasi</option>
+                    <option value="PROJ">Proyek</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_description">Deskripsi</label>
+                <textarea id="id_description" name="description" rows="4" required class="project-form__textarea"></textarea>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="id_is_ongoing" name="is_ongoing" style="width: auto;">
+                <label for="id_is_ongoing" style="margin-bottom: 0;">Sedang Berlangsung</label>
+            </div>
+            <div class="project-form-modal__actions">
+                <button type="button" class="button button-secondary" onclick="document.getElementById('add-experience-modal').hidePopover()">Batal</button>
+                <button type="submit" class="button">Simpan Pengalaman</button>
+            </div>
+        </form>
+    </div>
+</dialog>
