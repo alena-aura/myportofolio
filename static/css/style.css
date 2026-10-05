@@ -1245,3 +1245,16 @@ select {
 .toast-success { border-left: 4px solid #09401d; }
 .toast-error { border-left: 4px solid #b42318; }
 .toast-normal { border-left: 4px solid var(--accent); }
+
+/* Tambahan Styling untuk State AJAX & Modal Experience */
+.loading-state, .error-state, .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+dialog::backdrop {
+    background: rgba(28, 25, 23, 0.58);
+}
